@@ -19,3 +19,10 @@ names.forEach(name =>{
 setInterval() function:
 It calls the specified function after every x amount of time.
 setInterval(function, 1000) //1000 miliseconds
+
+divs with class = "taken":
+last ten divs have the class "taken", they will be used to stop the tetromino from falling down the bottom of the grid
+
+some() function:
+it is an in-built function that returns true if atleast one of the items in an array meets the condition specified. 
+It runs for all the items in the array.

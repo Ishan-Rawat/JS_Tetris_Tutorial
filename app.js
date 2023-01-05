@@ -89,5 +89,24 @@ document.addEventListener('DOMContentLoaded', () => {
         undraw();
         currentPosition += width;
         draw();
+        freeze(); //we put this here so that the condition for freezing gets checked every second
+    }
+
+    //notes about .some() func in the .txt file
+    
+    //freeze function
+    /*Apart from starting the fall of a new tetromino what this function does is that:
+     * if "some" of the squares have one of the 'taken' squares below them then
+     * "it turns each of the squares of the current tetromino array into a square that contains the class 'taken'"
+    */ 
+    function freeze() {
+        if(current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
+        current.forEach(index => squares[currentPosition + index].classList.add('taken'))
+        //start a new tetromino falling
+        random = Math.floor(Math.random() * theTetrominoes.length)
+        current = theTetrominoes[random][currentRotation]
+        currentPosition = 4
+        draw()
+        }
     }
 })
