@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     //notes about the setInterval() function are in the .txt file
     //we assign it to the timerID field so that we can stop setInterval in the future. Not quite sure which module/lib it comes from tho.
-    timerId = setInterval(moveDown, 1000)
+    timerId = setInterval(moveDown, 500)
 
     function moveDown(){
         undraw();
@@ -108,5 +108,20 @@ document.addEventListener('DOMContentLoaded', () => {
         currentPosition = 4
         draw()
         }
+    }
+
+    function moveLeft() {
+        undraw();
+        const isAtLeftEdge = current.some( index => (currentPosition + index) % width === 0); //returns true if some block satifies the condn
+        //We allow the block to move only if it is not at the left edge
+        if(!isAtLeftEdge) currentPosition -= 1;
+
+        //we also want our tetromino to go back one position if there is a tetromino already frozen at the position we have moved our tetromino to
+
+        if(current.some(index => squares[currentPosition + index].classList.contains('taken'))){
+            currentPosition += 1;
+        }
+
+        draw();
     }
 })

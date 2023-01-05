@@ -26,3 +26,11 @@ last ten divs have the class "taken", they will be used to stop the tetromino fr
 some() function:
 it is an in-built function that returns true if atleast one of the items in an array meets the condition specified. 
 It runs for all the items in the array.
+
+How we intend to stop our shapes from going off bounds from the left side:
+we know that our grid 10 squares wide. So all the left edge blocks are numbered 10, 20, 30, and so on.
+If our shape is touching a block that is numbered a multiple of 10 we won't allow it to move further left.
+
+KeyCodes and Events:
+Every key on our keyboard has a keycode assigned to it that we can access through our JavaScript. We can find out the keycode for any key on 
+a cool site: keycode.info
