@@ -62,7 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const theTetrominoes = [lTetromino, zTetromino, tTetromino, oTetromino, iTetromino]
 
     let currentPosition = 4; //the position from where our tetromino starts getting drawn
-    let current = theTetrominoes[0][0] //Notice the way we access the first element of lTetromino array
+    let currentRotation = 0;
+    
+    let random = Math.floor(Math.random() * theTetrominoes.length);
+    let current = theTetrominoes[random][currentRotation] //Notice the 2D array accessing notation
 
     /* Now we will create a function that will color the corresponding squares in the grid for the shape stored in the current array.
     * Each of these squares is basically a div that is inside an element(another div) that has the class name grid
@@ -72,4 +75,11 @@ document.addEventListener('DOMContentLoaded', () => {
             squares[currentPosition + index].classList.add('tetromino'); //We use .classList.add() to access the CSS stylesheet to add the style to the tetromino
         })
     }
+    
+    function undraw() {
+        current.forEach(index =>{
+            squares[currentPosition + index].classList.remove('tetromino');
+        })
+    }
+    
 })
