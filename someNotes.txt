@@ -1,0 +1,17 @@
+An introduction to tetris:
+The user to has to navigate 5 shapes or tetromenoes down a grid.
+We have to navigate them such that they fill up an entire row and when that happens we gain points.
+The user has the ability to rotate the shapes and the user also made aware of which shape is up next.
+
+In the tutorial the instructor decides to make a 20*10 grid for the game, thus the 200 divs.
+
+forEach() function:
+The forEach function call a provided call-back function ONCE for EACH item in an ARRAY in ASCENDING order.
+The call-back is invoked using three arguments 1.The value of the element 2.The index of the element 3.The array object that is being traversed. (.forEach(value, index, object);)
+Note: I think the instructor meant either of the 3 needs to be used. Cuz in the example we use the arrow function for the argument.
+
+forEach example:
+let names = ['Ishan', 'Mob', 'Shiro-T poison']
+names.forEach(name =>{
+    console.log(name + ' is the best')
+})
