@@ -81,5 +81,13 @@ document.addEventListener('DOMContentLoaded', () => {
             squares[currentPosition + index].classList.remove('tetromino');
         })
     }
-    
+    //notes about the setInterval() function are in the .txt file
+    //we assign it to the timerID field so that we can stop setInterval in the future. Not quite sure which module/lib it comes from tho.
+    timerId = setInterval(moveDown, 1000)
+
+    function moveDown(){
+        undraw();
+        currentPosition += width;
+        draw();
+    }
 })
