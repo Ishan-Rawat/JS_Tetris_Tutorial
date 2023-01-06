@@ -85,6 +85,21 @@ document.addEventListener('DOMContentLoaded', () => {
     //we assign it to the timerID field so that we can stop setInterval in the future. Not quite sure which module/lib it comes from tho.
     timerId = setInterval(moveDown, 500)
 
+    //assign functions to key-codes
+    function control(e) {
+        if(e.keyCode === 37){
+            moveLeft()
+        } else if(e.keyCode === 38){
+            rotate()
+        } else if(e.keyCode === 39){
+            moveRight()
+        } else if(e.keyCode === 40){
+            moveDown()
+        }
+    }
+
+    document.addEventListener('keyup', control);
+
     function moveDown(){
         undraw();
         currentPosition += width;
@@ -123,5 +138,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         draw();
+    }
+
+    function moveRight(){
+        undraw()
+        const isAtRigthEdge = current.some(index => (currentPosition + index) % width == width-1)
+        if(!isAtRigthEdge) currentPosition += 1
+
+        if(current.some(index => squares[currentPosition + index].classList.contains('taken'))){
+            currentPosition -=1
+        }
+        draw();
+    }
+
+    function rotate(){
+        undraw()
+        currentRotation ++
+        if(currentRotation === current.length){
+            //if the current rotation is at the last position make it go to the first one
+            currentRotation = 0
+        }
+        current = theTetrominoes[random][currentRotation]
+        draw()
     }
 })

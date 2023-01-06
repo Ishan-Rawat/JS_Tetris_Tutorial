@@ -34,3 +34,10 @@ If our shape is touching a block that is numbered a multiple of 10 we won't allo
 KeyCodes and Events:
 Every key on our keyboard has a keycode assigned to it that we can access through our JavaScript. We can find out the keycode for any key on 
 a cool site: keycode.info
+
+.addEventListener('event', function) function:
+This function calls a specified function as soon as some specified event occurs.
+This function can be attached to an element of the html code such as a div to make things happen.
+In our code we attach this eventListner to the whole HTML document.
+Also, for the 'event' arg, there are some specific args to be used there, not something that we create (apparently), gotta chack the docs or something.
+We also have a removeEventListener() function. Not discussed here tho.
