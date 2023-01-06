@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const width = 10; //stores width of the grid
 
+    var nextRandom =0;
+
     //Written about forEach() in the someNotes.txt file
 
     /* in the following lines we are storing the cells that make up each of the shapes.The arrays are 2D and each row stores the various 
@@ -118,10 +120,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if(current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
         current.forEach(index => squares[currentPosition + index].classList.add('taken'))
         //start a new tetromino falling
-        random = Math.floor(Math.random() * theTetrominoes.length)
+        random = nextRandom;
+        nextRandom = Math.floor(Math.random() * theTetrominoes.length)
         current = theTetrominoes[random][currentRotation]
         currentPosition = 4
         draw()
+        displayShape();
         }
     }
 
@@ -161,4 +165,33 @@ document.addEventListener('DOMContentLoaded', () => {
         current = theTetrominoes[random][currentRotation]
         draw()
     }
+
+    //Displaying the next tetromino
+    //Previously we wrote squares = array.from... Here we wont use array and use an alternate approach
+    const displaySquares = document.querySelectorAll('mini-grid div')
+    const displayWidth = 4
+    let displayIndex = 0
+
+    //The tetrominoes without rotation
+    const upNextTetrominoes = [
+        [1, displayWidth+1, displayWidth*2+1, 2], //lTetromino
+        [0, displayWidth, displayWidth+1, displayWidth*2+1], //zTetromino
+        [1, displayWidth, displayWidth+1, displayWidth+2], //tTetromino
+        [0, 1, displayWidth, displayWidth+1], //oTetromino
+        [1, displayWidth+1, displayWidth*2+1, displayWidth*3+1] //iTetromino
+    ]
+
+    //display the shape up-next in the mini-grid display
+    function displayShape(){
+        //remove any trace of a tetromino from the entire grid. Don't understand why
+        displaySquares.forEach(square => {
+            square.classList.remove('tetromino')
+        })
+    }
+    //nextRandom initialised at the top of the file because we need to use it in the freeze function as well
+    upNextTetrominoes[nextRandom].forEach( index => {
+        displaySquares[displayIndex + index].classList.add('tetromino')
+    })
+    //This just doesn't work i dont know why 
+    
 })

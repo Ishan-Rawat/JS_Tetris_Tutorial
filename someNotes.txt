@@ -41,3 +41,8 @@ This function can be attached to an element of the html code such as a div to ma
 In our code we attach this eventListner to the whole HTML document.
 Also, for the 'event' arg, there are some specific args to be used there, not something that we create (apparently), gotta chack the docs or something.
 We also have a removeEventListener() function. Not discussed here tho.
+
+Displaying the next tetromino:
+We will create a 4*4  grid next to the main grid.
+we do so by creating a new div with class: and we create 16 divs inside it. 
+Then we put all divs of the main grid and the mini-grid inside another grid so that we can use flexbox to make them appear next to each other.
